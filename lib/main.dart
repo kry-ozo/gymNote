@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gym_note/pages/workouts.dart';
+import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 
 void main() {
   runApp(const GymNote());
@@ -28,14 +29,24 @@ class GymNote extends StatelessWidget {
             builder: (context) {
               return IconButton(onPressed: (){
                 Scaffold.of(context).openDrawer();
-              }, icon: const Icon(Icons.menu, color: Colors.yellow,));
+              }, icon: const Icon(Icons.menu, color: Colors.yellow, size: 35));
             }
           ),
+          toolbarHeight: 75,
+        ),
+        bottomNavigationBar: ConvexAppBar(
+          items: const [
+            TabItem(icon: Icons.home, title: "Home"),
+            TabItem(icon: Icons.add, title: 'Add'),
+            TabItem(icon: Icons.settings, title: 'Settings'),
+          ],
+          backgroundColor:const Color.fromARGB(255, 24, 24, 24) ,
+          activeColor: Colors.yellow,
         ),
         drawer: Drawer(
           backgroundColor: const Color.fromARGB(255, 43, 43, 43) ,
           child: ListView(
-            children: [
+            children: const [
               DrawerHeader(child: Text("Settings", style: TextStyle(color: Colors.yellow),)),
               ListTile(title: Text("Item"),),
               ListTile(title: Text("Item"),),

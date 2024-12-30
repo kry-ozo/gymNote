@@ -9,11 +9,16 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  convex_bottom_bar: ^3.2.0
+  replog_icons: ^0.0.3
+  iconify_flutter_plus: ^1.0.4
+  super_icons: ^1.0.3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^4.0.0
+  
 
 flutter:
   uses-material-design: true
