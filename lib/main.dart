@@ -66,11 +66,19 @@ class _GymNoteState extends State<GymNote> {
         drawer: Drawer(
           backgroundColor: const Color.fromARGB(255, 43, 43, 43) ,
           child: ListView(
-            children: const [
-              MyDrawerHeader(),
-              ListTile(title: Text("Home", style: TextStyle(color: Colors.yellow, fontSize: 24),), leading: Icon(Icons.home, color: Colors.yellow, size: 36,),),
-              ListTile(title: Text("Settings", style: TextStyle(color: Colors.yellow, fontSize: 24),),leading: Icon(Icons.settings, color: Colors.yellow, size: 36,)),
-              ListTile(title: Text("Terms And Service", style: TextStyle(color: Colors.yellow, fontSize: 24),),leading: Icon(Icons.list, color: Colors.yellow, size: 36,)),
+            children:  [
+              const MyDrawerHeader(),
+              ListTile(title: const Text("Home", style: TextStyle(color: Colors.yellow, fontSize: 24),), leading: const Icon(Icons.home, color: Colors.yellow, size: 36,), onTap: ()=>{
+                setState(() {
+                  index = 0;
+                })
+              },),
+              ListTile(title: Text("Settings", style: TextStyle(color: Colors.yellow, fontSize: 24),),leading: Icon(Icons.settings, color: Colors.yellow, size: 36,), onTap: ()=>{
+                setState(() {
+                  index = 2;
+                }
+              )}),
+              ListTile(title: Text("Terms And Service", style: TextStyle(color: Colors.yellow, fontSize: 24),),leading: Icon(Icons.list, color: Colors.yellow, size: 36,), onTap: ()=>{}),
 
             ],
           ),
