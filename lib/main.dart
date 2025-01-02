@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gym_note/components/drawer.dart';
+import 'package:gym_note/pages/add_workout.dart';
+import 'package:gym_note/pages/settings.dart';
 import 'package:gym_note/pages/workouts.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 
@@ -7,9 +9,20 @@ void main() {
   runApp(const GymNote());
 }
 
-class GymNote extends StatelessWidget {
+class GymNote extends StatefulWidget {
   const GymNote({super.key});
 
+  @override
+  State<GymNote> createState() => _GymNoteState();
+}
+
+class _GymNoteState extends State<GymNote> {
+  final List<Widget> _pages = [
+    Workouts(),
+    AddWorkout(),
+    Settings()
+  ];
+  int index = 0;
   @override
   Widget build(BuildContext context) {
     return  MaterialApp(
@@ -44,6 +57,11 @@ class GymNote extends StatelessWidget {
           ],
           backgroundColor:const Color.fromARGB(255, 24, 24, 24) ,
           activeColor: Colors.yellow,
+          onTap: (int i){
+            setState(() {
+              index = i;
+            });
+          },
         ),
         drawer: Drawer(
           backgroundColor: const Color.fromARGB(255, 43, 43, 43) ,
@@ -57,7 +75,7 @@ class GymNote extends StatelessWidget {
             ],
           ),
         ),
-        body: Workouts()
+        body: _pages[index]
       ),
     );
   }
