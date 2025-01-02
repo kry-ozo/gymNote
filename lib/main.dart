@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gym_note/components/drawer.dart';
 import 'package:gym_note/pages/workouts.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 
@@ -17,7 +18,8 @@ class GymNote extends StatelessWidget {
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
           seedColor: const Color.fromARGB(255, 43, 43, 43),
-          )
+        ),
+        dividerColor: Colors.yellow
       ),
       home: Scaffold(
         backgroundColor:const Color.fromARGB(255, 43, 43, 43) ,
@@ -47,10 +49,10 @@ class GymNote extends StatelessWidget {
           backgroundColor: const Color.fromARGB(255, 43, 43, 43) ,
           child: ListView(
             children: const [
-              DrawerHeader(child: Text("Settings", style: TextStyle(color: Colors.yellow),)),
-              ListTile(title: Text("Item"),),
-              ListTile(title: Text("Item"),),
-              ListTile(title: Text("Item"),)
+              MyDrawerHeader(),
+              ListTile(title: Text("Home", style: TextStyle(color: Colors.yellow, fontSize: 24),), leading: Icon(Icons.home, color: Colors.yellow, size: 36,),),
+              ListTile(title: Text("Settings", style: TextStyle(color: Colors.yellow, fontSize: 24),),leading: Icon(Icons.settings, color: Colors.yellow, size: 36,)),
+              ListTile(title: Text("Terms And Service", style: TextStyle(color: Colors.yellow, fontSize: 24),),leading: Icon(Icons.list, color: Colors.yellow, size: 36,)),
 
             ],
           ),
