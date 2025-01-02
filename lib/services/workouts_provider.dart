@@ -12,7 +12,14 @@ class WorkoutsProvider extends ChangeNotifier{
     notifyListeners();
   }
 
-  void deleteWorkout(Workout workout){
-    
+  void deleteWorkout(String id){
+    _workouts = _workouts.where((workout)=> workout.id != id).toList();
+    notifyListeners();
+  }
+
+  void editWorkout(Workout newWorkout){
+   Workout oldWorkout =  _workouts.firstWhere((workout)=>workout.id == newWorkout.id);
+   int index = _workouts.indexOf(oldWorkout);
+   _workouts[index] = newWorkout;
   }
 }
