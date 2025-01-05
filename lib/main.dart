@@ -4,9 +4,16 @@ import 'package:gym_note/pages/add_workout.dart';
 import 'package:gym_note/pages/settings.dart';
 import 'package:gym_note/pages/workouts.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
+import 'package:gym_note/services/workouts_provider.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const GymNote());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context)=>WorkoutsProvider(),
+      child: const GymNote()
+    )
+  );
 }
 
 class GymNote extends StatefulWidget {
@@ -18,6 +25,10 @@ class GymNote extends StatefulWidget {
 
 class _GymNoteState extends State<GymNote> {
   final TextEditingController nameController = TextEditingController();
+  void addWorkout(){
+    String workoutName =  nameController.text;
+
+  }
   int index = 0;
   late List<Widget> _pages;
   
@@ -28,6 +39,7 @@ class _GymNoteState extends State<GymNote> {
     Workouts(),
     AddWorkout(
       nameController: nameController,
+      onPressed: addWorkout,
       ),
     Settings()
   ];

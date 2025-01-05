@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class AddWorkout extends StatelessWidget {
   TextEditingController nameController;
-  AddWorkout({super.key, required this.nameController});
+  void Function() onPressed;
+  AddWorkout({super.key, required this.nameController, required this.onPressed});
   
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,7 @@ class AddWorkout extends StatelessWidget {
               borderSide: BorderSide(color: Colors.yellow)
             ),
             focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: const Color.fromARGB(255, 255, 230, 0))
+              borderSide: BorderSide(color:  Color.fromARGB(255, 255, 230, 0))
             )
           ),
           style: const TextStyle(
@@ -32,11 +33,9 @@ class AddWorkout extends StatelessWidget {
           
           ),
         ),
-        SizedBox(height: 30,)
+        const SizedBox(height: 30,)
         ,
-        TextButton(onPressed: (){
-
-        }, child: Icon(Icons.add, color: Color.fromARGB(255, 43, 43, 43),size: 28,),
+        TextButton(onPressed: onPressed, child: Icon(Icons.add, color: Color.fromARGB(255, 43, 43, 43),size: 28,),
         style: TextButton.styleFrom(
           backgroundColor: Colors.yellow,
           padding: EdgeInsets.symmetric(horizontal: 30)

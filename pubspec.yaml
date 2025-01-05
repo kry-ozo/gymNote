@@ -13,6 +13,7 @@ dependencies:
   replog_icons: ^0.0.3
   iconify_flutter_plus: ^1.0.4
   super_icons: ^1.0.3
+  provider: ^6.1.2
 
 dev_dependencies:
   flutter_test:
