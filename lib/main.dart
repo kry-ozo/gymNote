@@ -17,13 +17,21 @@ class GymNote extends StatefulWidget {
 }
 
 class _GymNoteState extends State<GymNote> {
-  final List<Widget> _pages = [
+  final TextEditingController nameController = TextEditingController();
+  int index = 0;
+  late List<Widget> _pages;
+  
+  @override
+  void initState(){
+    super.initState();
+    _pages =  [
     Workouts(),
-    AddWorkout(),
+    AddWorkout(
+      nameController: nameController,
+      ),
     Settings()
   ];
-  int index = 0;
-  @override
+  }
   Widget build(BuildContext context) {
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
