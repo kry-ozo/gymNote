@@ -30,6 +30,9 @@ class _GymNoteState extends State<GymNote> {
     String workoutName =  nameController.text;
     
     Provider.of<WorkoutsProvider>(context, listen: false).addWorkout(workoutName);
+    setState(() {
+      index = 0;
+    });
     
   }
   int index = 0;
