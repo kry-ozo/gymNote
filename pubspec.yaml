@@ -14,6 +14,7 @@ dependencies:
   iconify_flutter_plus: ^1.0.4
   super_icons: ^1.0.3
   provider: ^6.1.2
+  uuid: ^4.5.1
 
 dev_dependencies:
   flutter_test:

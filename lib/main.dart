@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gym_note/components/drawer.dart';
+import 'package:gym_note/models/workout.dart';
 import 'package:gym_note/pages/add_workout.dart';
 import 'package:gym_note/pages/settings.dart';
 import 'package:gym_note/pages/workouts.dart';
@@ -27,7 +28,9 @@ class _GymNoteState extends State<GymNote> {
   final TextEditingController nameController = TextEditingController();
   void addWorkout(){
     String workoutName =  nameController.text;
-
+    
+    Provider.of<WorkoutsProvider>(context, listen: false).addWorkout(workoutName);
+    
   }
   int index = 0;
   late List<Widget> _pages;

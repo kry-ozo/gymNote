@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:gym_note/models/workout.dart';
+import 'package:uuid/uuid.dart';
 
 
 class WorkoutsProvider extends ChangeNotifier{
   List<Workout> _workouts = [];
+  static const uuid = Uuid();
 
   List<Workout> get workouts => _workouts;
 
-  void addWorkout(Workout workout){
+  void addWorkout(String name){
+    Workout workout = Workout(id: uuid.v1(),workoutName: name, exercisesCount: 0, exercises: []);
     _workouts.add(workout);
     notifyListeners();
   }
