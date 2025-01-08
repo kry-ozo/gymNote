@@ -8,13 +8,23 @@ class WorkoutPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor:const Color.fromARGB(255, 43, 43, 43) ,
       appBar: AppBar(
-        title: Text(workout.workoutName),
+        toolbarHeight: 75,
+         iconTheme: IconThemeData(
+          color: Colors.yellow, // Ustaw kolor strzałki
+        ),
+        backgroundColor:const Color.fromARGB(255, 24, 24, 24) ,
+        centerTitle: true,
+        title: Text(workout.workoutName, style: TextStyle(color: Colors.yellow, fontWeight: FontWeight.w600),),
+        actions: [
+          IconButton(onPressed: (){}, icon: Icon(Icons.add))
+        ],
       ),
       body: ListView.builder(
         itemCount: workout.exercises.length,
         itemBuilder: (context,index){
-            return ListTile(title: Text("Exercise"),);
+            return ListTile(title: Text("Exercise", style: TextStyle(color: Colors.yellow, fontWeight: FontWeight.w600),),);
       }),
     );
   }
