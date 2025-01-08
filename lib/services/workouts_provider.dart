@@ -25,4 +25,8 @@ class WorkoutsProvider extends ChangeNotifier{
    int index = _workouts.indexOf(oldWorkout);
    _workouts[index] = newWorkout;
   }
+
+  Workout getWorkout(String id){
+    return _workouts.firstWhere((workout)=>workout.id == id);
+  }
 }
