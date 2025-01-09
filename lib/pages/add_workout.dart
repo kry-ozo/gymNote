@@ -1,8 +1,10 @@
+import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 
 class AddWorkout extends StatelessWidget {
   TextEditingController nameController;
   void Function() onPressed;
+
   AddWorkout({super.key, required this.nameController, required this.onPressed});
   
   @override

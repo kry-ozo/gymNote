@@ -26,10 +26,12 @@ class GymNote extends StatefulWidget {
 
 class _GymNoteState extends State<GymNote> {
   final TextEditingController nameController = TextEditingController();
+  final GlobalKey<ConvexAppBarState> _appBarKey = GlobalKey<ConvexAppBarState>();
   void addWorkout(){
     String workoutName =  nameController.text;
-    
+    _appBarKey.currentState?.animateTo(0);
     Provider.of<WorkoutsProvider>(context, listen: false).addWorkout(workoutName);
+    
     setState(() {
       index = 0;
     });
@@ -76,6 +78,7 @@ class _GymNoteState extends State<GymNote> {
           toolbarHeight: 75,
         ),
         bottomNavigationBar: ConvexAppBar(
+          key: _appBarKey,
           items: const [
             TabItem(icon: Icons.home, title: "Home"),
             TabItem(icon: Icons.add, title: 'Add'),
@@ -114,3 +117,4 @@ class _GymNoteState extends State<GymNote> {
     );
   }
 }
+
