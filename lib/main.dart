@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:gym_note/components/drawer.dart';
-import 'package:gym_note/models/workout.dart';
 import 'package:gym_note/pages/add_workout.dart';
 import 'package:gym_note/pages/settings.dart';
 import 'package:gym_note/pages/workouts.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
+import 'package:gym_note/services/exercise_provider.dart';
 import 'package:gym_note/services/workouts_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (context)=>WorkoutsProvider(),
-      child: const GymNote()
-    )
-  );
+    MultiProvider(providers: [
+      ChangeNotifierProvider(create: (context)=>WorkoutsProvider()),
+      ChangeNotifierProvider(create: (context)=>ExerciseProvider())
+    ],
+    child: const GymNote()
+  ));
 }
 
 class GymNote extends StatefulWidget {

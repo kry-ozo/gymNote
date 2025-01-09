@@ -3,7 +3,8 @@ class Exercise {
   final String name;
   final List<DateTime> logs;
   final String description;
+  final String muscleType;
 
-  Exercise({required this.id, required this.name, required this.logs, required this.description});
+  Exercise({required this.id, required this.name, required this.logs, required this.description, required this.muscleType});
 
 }
