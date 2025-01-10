@@ -4,13 +4,19 @@ import 'package:uuid/uuid.dart';
 
 
 class WorkoutsProvider extends ChangeNotifier{
-  List<Workout> _workouts = [];
+  List<Workout> _workouts = [
+    Workout(
+      id: "test",
+      workoutName: "test",
+      exercises: [],
+    ),
+  ];
   static const uuid = Uuid();
 
   List<Workout> get workouts => _workouts;
 
   void addWorkout(String name){
-    Workout workout = Workout(id: uuid.v1(),workoutName: name, exercisesCount: 0, exercises: []);
+    Workout workout = Workout(id: uuid.v1(),workoutName: name, exercises: []);
     _workouts.add(workout);
     notifyListeners();
   }

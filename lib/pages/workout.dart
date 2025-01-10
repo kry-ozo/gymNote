@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gym_note/models/workout.dart';
+import 'package:gym_note/pages/add_exercise.dart';
 
 class WorkoutPage extends StatelessWidget {
   final Workout workout;
@@ -18,7 +19,9 @@ class WorkoutPage extends StatelessWidget {
         centerTitle: true,
         title: Text(workout.workoutName, style: TextStyle(color: Colors.yellow, fontWeight: FontWeight.w600),),
         actions: [
-          IconButton(onPressed: (){}, icon: Icon(Icons.add))
+          IconButton(onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> AddExercise()));
+          }, icon: Icon(Icons.add))
         ],
       ),
       body: ListView.builder(
