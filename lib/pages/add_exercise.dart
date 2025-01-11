@@ -12,18 +12,18 @@ class AddExercise extends StatelessWidget {
       backgroundColor:const Color.fromARGB(255, 43, 43, 43) ,
       appBar: AppBar(
         toolbarHeight: 75,
-         iconTheme: IconThemeData(
+         iconTheme: const IconThemeData(
           color: Colors.yellow,
         ),
         backgroundColor:const Color.fromARGB(255, 24, 24, 24) ,
         centerTitle: true,
-        title: Text("Add Exercise", style: TextStyle(color: Colors.yellow, fontWeight: FontWeight.w600),),
+        title: const Text("Add Exercise", style: TextStyle(color: Colors.yellow, fontWeight: FontWeight.w600),),
       ),
       body:  Consumer<ExerciseProvider>(builder: (context, provider, child){
         return ListView.builder(
           itemCount: provider.types.length,
           itemBuilder: (context, index){
-            return ExerciseDropdown(exerciseList: provider.getExercisesByType(provider.types[index]));
+            return ExerciseDropdown(exerciseList: provider.getExercisesByType(provider.types[index]), exerciseType:provider.types[index] ,);
           }
         );
       })

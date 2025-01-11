@@ -3,21 +3,19 @@ import 'package:gym_note/models/exercise.dart';
 
 class ExerciseDropdown extends StatelessWidget {
   List<Exercise> exerciseList;
-  ExerciseDropdown({super.key, required this.exerciseList});
+  String exerciseType;
+  ExerciseDropdown({super.key, required this.exerciseList, required this.exerciseType});
   
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButton(
-      items: exerciseList.map<DropdownMenuItem<String>>((Exercise exercise){
-      return DropdownMenuItem<String>(
-        value: exercise.id,
-        child: Text(exercise.name),
-        
+    return ExpansionTile(
+      title: Text(exerciseType),
+      children: exerciseList.map((exercise){
+        return ListTile(
+          title: Text(exercise.name),
         );
-    }).toList(),
-    onChanged: (exercise){
-
-    });
+      }).toList(),
+    );
   }
 }
