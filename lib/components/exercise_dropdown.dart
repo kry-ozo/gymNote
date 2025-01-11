@@ -10,10 +10,17 @@ class ExerciseDropdown extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ExpansionTile(
-      title: Text(exerciseType),
+      title: Text(exerciseType, style: const TextStyle(
+        color: Colors.yellow,
+        fontWeight: FontWeight.bold,
+        fontSize: 18
+      ),),
+      trailing: Icon(Icons.arrow_drop_down, color: Colors.yellow,),
       children: exerciseList.map((exercise){
         return ListTile(
-          title: Text(exercise.name),
+          title: Text(exercise.name, style: const TextStyle(
+            color: Colors.yellow
+          ),),
         );
       }).toList(),
     );
