@@ -4,7 +4,8 @@ import 'package:gym_note/services/exercise_provider.dart';
 import 'package:provider/provider.dart';
 
 class AddExercise extends StatelessWidget {
-  const AddExercise({super.key});
+  final String workoutId;
+  const AddExercise({super.key, required this.workoutId});
 
   @override
   Widget build(BuildContext context) {

@@ -15,6 +15,10 @@ class ExerciseProvider extends ChangeNotifier{
     Exercise newExercise = Exercise(id: uuid.v4(), name: name, logs: [], description: description, muscleType: muscleType);
     _exercises.add(newExercise);
   }
+  Exercise getExercise(String id){
+    return _exercises.firstWhere((exercise)=>exercise.id == id);
+
+  }
 
   List<Exercise> getExercisesByType(String type){
     List<Exercise> filteredExercises = _exercises.where((exercise)=>exercise.muscleType == type).toList();

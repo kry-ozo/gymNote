@@ -20,7 +20,7 @@ class WorkoutPage extends StatelessWidget {
         title: Text(workout.workoutName, style: TextStyle(color: Colors.yellow, fontWeight: FontWeight.w600),),
         actions: [
           IconButton(onPressed: (){
-            Navigator.push(context, MaterialPageRoute(builder: (context)=> AddExercise()));
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> AddExercise(workoutId: workout.id,)));
           }, icon: Icon(Icons.add))
         ],
       ),

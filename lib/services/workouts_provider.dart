@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gym_note/models/exercise.dart';
 import 'package:gym_note/models/workout.dart';
 import 'package:uuid/uuid.dart';
 
@@ -34,5 +35,10 @@ class WorkoutsProvider extends ChangeNotifier{
 
   Workout getWorkout(String id){
     return _workouts.firstWhere((workout)=>workout.id == id);
+  }
+
+  void addExerciseToWorkout(String workoutId, Exercise exercise){
+    Workout workout = getWorkout(workoutId);
+    workout.exercises.add(exercise);
   }
 }
