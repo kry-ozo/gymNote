@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:gym_note/components/alert_dialog.dart';
 import 'package:gym_note/models/exercise.dart';
 
 class ExerciseDropdown extends StatelessWidget {
   List<Exercise> exerciseList;
   String exerciseType;
-  ExerciseDropdown({super.key, required this.exerciseList, required this.exerciseType});
+  String workoutId;
+  ExerciseDropdown({super.key, required this.exerciseList, required this.exerciseType, required this.workoutId});
   
 
   @override
@@ -21,6 +23,9 @@ class ExerciseDropdown extends StatelessWidget {
           title: Text(exercise.name, style: const TextStyle(
             color: Colors.yellow
           ),),
+          onTap: () async {
+            await addExerciseToWorkoutDialog(context, exercise.id, workoutId);
+          },
         );
       }).toList(),
     );

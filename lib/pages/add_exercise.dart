@@ -24,7 +24,7 @@ class AddExercise extends StatelessWidget {
         return ListView.builder(
           itemCount: provider.types.length,
           itemBuilder: (context, index){
-            return ExerciseDropdown(exerciseList: provider.getExercisesByType(provider.types[index]), exerciseType:provider.types[index] ,);
+            return ExerciseDropdown(exerciseList: provider.getExercisesByType(provider.types[index]), exerciseType:provider.types[index], workoutId: workoutId,);
           }
         );
       })
