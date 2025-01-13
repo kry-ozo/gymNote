@@ -18,10 +18,26 @@ class ExercisePage extends StatelessWidget {
         ),
         backgroundColor:const Color.fromARGB(255, 24, 24, 24) ,
         centerTitle: true,
-        title: Text("Exercise Name", style: TextStyle(color: Colors.yellow, fontWeight: FontWeight.w600),),
+        title: Text(provider.getExercise(id).name, style: TextStyle(color: Colors.yellow, fontWeight: FontWeight.w600),),
         
       ),
-      body: Column()
+      body: Column(
+        children: [
+          SizedBox(
+            child: Row(
+              children: [
+                Text("Weight:"),
+                TextField()
+              ],
+            ),
+            height: 40,
+          ),
+          SizedBox(
+            child: Row(),
+            height: 40,
+          )
+        ],
+      )
     );
     });
   }

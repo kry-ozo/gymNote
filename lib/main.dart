@@ -32,7 +32,7 @@ class _GymNoteState extends State<GymNote> {
     String workoutName =  nameController.text;
     _appBarKey.currentState?.animateTo(0);
     Provider.of<WorkoutsProvider>(context, listen: false).addWorkout(workoutName);
-    
+    nameController.clear();
     setState(() {
       index = 0;
     });
@@ -45,14 +45,16 @@ class _GymNoteState extends State<GymNote> {
   void initState(){
     super.initState();
     _pages =  [
-    Workouts(),
+    const Workouts(),
     AddWorkout(
       nameController: nameController,
       onPressed: addWorkout,
       ),
-    Settings()
+    const Settings()
   ];
   }
+  
+  @override
   Widget build(BuildContext context) {
     return  MaterialApp(
       debugShowCheckedModeBanner: false,

@@ -24,6 +24,7 @@ Future<bool?> addExerciseToWorkoutDialog(BuildContext context, String exerciseId
           TextButton(onPressed: (){
             Exercise exercise = Provider.of<ExerciseProvider>(context, listen: false).getExercise(exerciseId);
             Provider.of<WorkoutsProvider>(context, listen: false).addExerciseToWorkout(workoutId, exercise);
+            Navigator.of(context).pop();
           }, child: const Text("Add"))
         ],
       );
