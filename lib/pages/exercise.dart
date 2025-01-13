@@ -13,28 +13,21 @@ class ExercisePage extends StatelessWidget {
       backgroundColor:const Color.fromARGB(255, 43, 43, 43) ,
       appBar: AppBar(
         toolbarHeight: 75,
-         iconTheme: IconThemeData(
+         iconTheme: const IconThemeData(
           color: Colors.yellow, // Ustaw kolor strzałki
         ),
         backgroundColor:const Color.fromARGB(255, 24, 24, 24) ,
         centerTitle: true,
-        title: Text(provider.getExercise(id).name, style: TextStyle(color: Colors.yellow, fontWeight: FontWeight.w600),),
+        title: Text(provider.getExercise(id).name, style: const TextStyle(color: Colors.yellow, fontWeight: FontWeight.w600),),
         
       ),
-      body: Column(
+      body: const Column(
         children: [
-          SizedBox(
-            child: Row(
-              children: [
-                Text("Weight:"),
-                TextField()
-              ],
-            ),
-            height: 40,
-          ),
-          SizedBox(
-            child: Row(),
-            height: 40,
+          Row(
+            children: [
+              Text("Weight:"),
+              TextField()
+            ],
           )
         ],
       )
