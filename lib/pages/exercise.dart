@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 import 'package:gym_note/services/exercise_provider.dart';
 import 'package:provider/provider.dart';
@@ -21,15 +23,103 @@ class ExercisePage extends StatelessWidget {
         title: Text(provider.getExercise(id).name, style: const TextStyle(color: Colors.yellow, fontWeight: FontWeight.w600),),
         
       ),
-      body: const Column(
-        children: [
-          Row(
-            children: [
-              Text("Weight:"),
-              TextField()
-            ],
-          )
-        ],
+      body: SingleChildScrollView(
+        child:  Column(
+          children: [
+            Row(
+              spacing: 20,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 80,
+                  child: Center(child: Text("Reps:", style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.yellow
+                  ),)),
+                ),
+                
+                  SizedBox(
+                    width: 100,
+                    height: 80,
+                    child: Center(child: TextField(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          gapPadding: 2
+                        ),
+                        
+                      ),
+                    )),
+                  ),
+                
+                SizedBox(
+                  height: 80,
+                  child: Icon(Icons.add, color: Colors.yellow,),
+                ),
+                SizedBox(
+                  height: 80,
+                  child: Icon(Icons.remove, color: Colors.yellow,)
+                )
+              ],
+            ),
+            Row(
+              spacing: 20,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 80,
+                  child: Center(child: Text("Weight:", style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.yellow
+                  ),)),
+                ),
+                
+                  SizedBox(
+                    width: 100,
+                    height: 80,
+                    child: Center(child: TextField(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          gapPadding: 2
+                        ),
+                        
+                      ),
+                    )),
+                  ),
+                
+                SizedBox(
+                  height: 80,
+                  child: Icon(Icons.add, color: Colors.yellow,),
+                ),
+                SizedBox(
+                  height: 80,
+                  child: Icon(Icons.remove, color: Colors.yellow,)
+                ),
+                
+              ],
+            ),
+            
+              SizedBox( 
+                height: 40,
+                width: double.infinity,
+                  child: TextButton(onPressed: (){
+              
+                  },
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.yellow,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.zero
+                    )
+                  )
+                  , child: Text("COMPLETE SET", style: TextStyle(
+                    color: Color.fromARGB(255, 24, 24, 24) 
+
+                  ),)),
+              ),
+            
+          ],
+        ),
       )
     );
     });
