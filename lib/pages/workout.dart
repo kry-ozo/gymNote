@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gym_note/components/exercise_tile.dart';
 import 'package:gym_note/models/workout.dart';
 import 'package:gym_note/pages/add_exercise.dart';
 import 'package:gym_note/pages/exercise.dart';
@@ -31,17 +32,7 @@ class WorkoutPage extends StatelessWidget {
         return ListView.builder(
         itemCount: provider.getWorkout(workout.id).exercises.length,
         itemBuilder: (context,index){
-            return  ListTile(
-              title: Text(provider.getWorkout(workout.id).exercises[index].name,
-               style: const TextStyle(
-                color: Colors.yellow, fontWeight: FontWeight.w600)
-                ,),
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(
-                  builder: (context) => ExercisePage(id: provider.getWorkout(workout.id).exercises[index].id)
-                ));
-              },
-              );
+            return  ExerciseTile(exerciseName: provider.getWorkout(workout.id).exercises[index].name, exerciseId: provider.getWorkout(workout.id).exercises[index].id);
       });
       })
     );

@@ -3,7 +3,8 @@ import 'package:super_icons/super_icons.dart';
 
 class WorkoutTile extends StatelessWidget {
   final String workoutTitle;
-  const WorkoutTile({super.key, required this.workoutTitle});
+  final int exerciseCount;
+  const WorkoutTile({super.key, required this.workoutTitle, required this.exerciseCount});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,11 @@ class WorkoutTile extends StatelessWidget {
         children: [
           const Icon(SuperIcons.bx_dumbbell, color: Colors.yellow, size: 45,),
           const SizedBox(width: 20,),
-          Text(workoutTitle, style: const TextStyle(color: Colors.yellow, fontSize: 20),)
+          Text(workoutTitle, style: const TextStyle(color: Colors.yellow, fontSize: 20),),
+          const Spacer(),
+          Text("Exercise count: $exerciseCount", style: const TextStyle(
+            color: Colors.yellow
+          ),)
         ],
       ),
     );

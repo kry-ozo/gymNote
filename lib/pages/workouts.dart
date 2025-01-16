@@ -17,8 +17,8 @@ class Workouts extends StatelessWidget {
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (context)=> WorkoutPage(workout: workout.workouts[index])));
             },
-            child: WorkoutTile(workoutTitle: workout.workouts[index].workoutName,
-            ));
+            child: WorkoutTile(workoutTitle: workout.workouts[index].workoutName, exerciseCount: workout.workouts[index].exercises.length,)
+            );
         }
       );
         
