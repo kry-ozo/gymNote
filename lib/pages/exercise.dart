@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:gym_note/services/exercise_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -26,80 +27,83 @@ class ExercisePage extends StatelessWidget {
       body: SingleChildScrollView(
         child:  Column(
           children: [
-            Row(
-              spacing: 20,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  height: 80,
-                  child: Center(child: Text("Reps:", style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.yellow
-                  ),)),
-                ),
-                
+            const SizedBox(height: 30,), 
+                Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: 80, // Stała szerokość dla tekstu, aby wyrównać elementy
+                    child: Center(
+                      child: Text(
+                        "Reps:",
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.yellow,
+                        ),
+                        textAlign: TextAlign.right, // Opcjonalne wyrównanie
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 10), // Odstęp między tekstem a TextField
                   SizedBox(
                     width: 100,
-                    height: 80,
-                    child: Center(child: TextField(
+                    height: 50,
+                    child: TextField(
+                      keyboardType: TextInputType.number,
+                      inputFormatters: [
+                        FilteringTextInputFormatter.digitsOnly
+                      ],
                       decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          gapPadding: 2
-                        ),
-                        
+                        border: OutlineInputBorder(),
+                        contentPadding: EdgeInsets.symmetric(horizontal: 8),
                       ),
-                    )),
+                    ),
                   ),
-                
-                SizedBox(
-                  height: 80,
-                  child: Icon(Icons.add, color: Colors.yellow,),
-                ),
-                SizedBox(
-                  height: 80,
-                  child: Icon(Icons.remove, color: Colors.yellow,)
-                )
-              ],
-            ),
-            Row(
-              spacing: 20,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  height: 80,
-                  child: Center(child: Text("Weight:", style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.yellow
-                  ),)),
-                ),
-                
+                  const SizedBox(width: 10), // Odstęp między TextField a ikonami
+                  Icon(Icons.add, color: Colors.yellow),
+                  const SizedBox(width: 10),
+                  Icon(Icons.remove, color: Colors.yellow),
+                ],
+              ),
+              const SizedBox(height: 15,), 
+                        Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: 80, // Taka sama szerokość jak w sekcji "Reps"
+                    child: Center(
+                      child: Text(
+                        "Weight:",
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.yellow,
+                        ),
+                        textAlign: TextAlign.right,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 10),
                   SizedBox(
                     width: 100,
-                    height: 80,
-                    child: Center(child: TextField(
+                    height: 50,
+                    child: TextField(
+                      keyboardType: TextInputType.number,
+                      inputFormatters: [
+                        FilteringTextInputFormatter.digitsOnly
+                      ],
                       decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          gapPadding: 2
-                        ),
-                        
+                        border: OutlineInputBorder(),
+                        contentPadding: EdgeInsets.symmetric(horizontal: 8),
                       ),
-                    )),
+                    ),
                   ),
-                
-                SizedBox(
-                  height: 80,
-                  child: Icon(Icons.add, color: Colors.yellow,),
-                ),
-                SizedBox(
-                  height: 80,
-                  child: Icon(Icons.remove, color: Colors.yellow,)
-                ),
-                
-              ],
-            ),
-            
+                  const SizedBox(width: 10),
+                  Icon(Icons.add, color: Colors.yellow),
+                  const SizedBox(width: 10),
+                  Icon(Icons.remove, color: Colors.yellow),
+                ],
+              ),
+              const SizedBox(height: 30,), 
               SizedBox( 
                 height: 40,
                 width: double.infinity,
@@ -117,7 +121,24 @@ class ExercisePage extends StatelessWidget {
 
                   ),)),
               ),
-            
+              SizedBox(height: 30,),
+              Text("Today Session", textAlign: TextAlign.center, style: TextStyle(
+                color: Colors.yellow,
+                fontSize: 18
+              ),),
+              //HERE IS GONNA BE LOGS LIST
+              SizedBox(height: 30,),
+              Text("Last Session", textAlign: TextAlign.center, style: TextStyle(
+                color: Colors.yellow,
+                fontSize: 18
+              ),),
+              //LOG LIST WITH LAST SESSION
+              SizedBox(height: 30,),
+              TextButton(onPressed: (){}, child: Text("View History", style: TextStyle(
+                color: Colors.yellow,
+                fontWeight: FontWeight.bold,
+                fontSize: 20
+              ),))
           ],
         ),
       )
