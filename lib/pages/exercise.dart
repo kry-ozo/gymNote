@@ -1,13 +1,24 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gym_note/services/exercise_provider.dart';
 import 'package:provider/provider.dart';
 
-class ExercisePage extends StatelessWidget {
+class ExercisePage extends StatefulWidget {
   final String id;
   const ExercisePage({super.key, required this.id});
+
+  @override
+  State<ExercisePage> createState() => _ExercisePageState();
+}
+
+class _ExercisePageState extends State<ExercisePage> {
+
+  TextEditingController weightController = TextEditingController();
+  TextEditingController repsController = TextEditingController();   
 
   @override
   Widget build(BuildContext context) {
@@ -17,11 +28,11 @@ class ExercisePage extends StatelessWidget {
       appBar: AppBar(
         toolbarHeight: 75,
          iconTheme: const IconThemeData(
-          color: Colors.yellow, // Ustaw kolor strzałki
+          color: Colors.yellow, 
         ),
         backgroundColor:const Color.fromARGB(255, 24, 24, 24) ,
         centerTitle: true,
-        title: Text(provider.getExercise(id).name, style: const TextStyle(color: Colors.yellow, fontWeight: FontWeight.w600),),
+        title: Text(provider.getExercise(widget.id).name, style: const TextStyle(color: Colors.yellow, fontWeight: FontWeight.w600),),
         
       ),
       body: SingleChildScrollView(
@@ -32,7 +43,7 @@ class ExercisePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(
-                    width: 80, // Stała szerokość dla tekstu, aby wyrównać elementy
+                    width: 80, 
                     child: Center(
                       child: Text(
                         "Reps:",
@@ -40,11 +51,11 @@ class ExercisePage extends StatelessWidget {
                           fontSize: 20,
                           color: Colors.yellow,
                         ),
-                        textAlign: TextAlign.right, // Opcjonalne wyrównanie
+                        textAlign: TextAlign.right, 
                       ),
                     ),
                   ),
-                  const SizedBox(width: 10), // Odstęp między tekstem a TextField
+                  const SizedBox(width: 10), 
                   SizedBox(
                     width: 100,
                     height: 50,
@@ -57,9 +68,10 @@ class ExercisePage extends StatelessWidget {
                         border: OutlineInputBorder(),
                         contentPadding: EdgeInsets.symmetric(horizontal: 8),
                       ),
+                      controller: repsController,
                     ),
                   ),
-                  const SizedBox(width: 10), // Odstęp między TextField a ikonami
+                  const SizedBox(width: 10), 
                   Icon(Icons.add, color: Colors.yellow),
                   const SizedBox(width: 10),
                   Icon(Icons.remove, color: Colors.yellow),
@@ -70,7 +82,7 @@ class ExercisePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   SizedBox(
-                    width: 80, // Taka sama szerokość jak w sekcji "Reps"
+                    width: 80, 
                     child: Center(
                       child: Text(
                         "Weight:",
@@ -95,6 +107,7 @@ class ExercisePage extends StatelessWidget {
                         border: OutlineInputBorder(),
                         contentPadding: EdgeInsets.symmetric(horizontal: 8),
                       ),
+                      controller: weightController,
                     ),
                   ),
                   const SizedBox(width: 10),
@@ -108,7 +121,9 @@ class ExercisePage extends StatelessWidget {
                 height: 40,
                 width: double.infinity,
                   child: TextButton(onPressed: (){
-              
+                    int reps = int.parse(repsController.text);
+                    double weight = double.parse(weightController.text);
+                    provider.addLogToExercise(widget.id, weight, reps);
                   },
                   style: TextButton.styleFrom(
                     backgroundColor: Colors.yellow,
@@ -119,7 +134,9 @@ class ExercisePage extends StatelessWidget {
                   , child: Text("COMPLETE SET", style: TextStyle(
                     color: Color.fromARGB(255, 24, 24, 24) 
 
-                  ),)),
+                  ),
+                  )
+                  ),
               ),
               SizedBox(height: 30,),
               Text("Today Session", textAlign: TextAlign.center, style: TextStyle(

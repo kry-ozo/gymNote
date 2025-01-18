@@ -33,5 +33,6 @@ class ExerciseProvider extends ChangeNotifier{
     int oneRepMax = (weight * (36/(37-reps))).round();
     Log newLog = Log(exerciseId: exercise.id, dateLog: currentDate, reps: reps, weight: weight, oneRepMax: oneRepMax);
     exercise.logs.add(newLog);
+    notifyListeners();
   } 
 }
