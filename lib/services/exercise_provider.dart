@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gym_note/models/exercise.dart';
+import 'package:gym_note/models/log.dart';
 import 'package:gym_note/placeholders/exercise_list.dart';
 import 'package:uuid/uuid.dart';
 
@@ -25,4 +26,12 @@ class ExerciseProvider extends ChangeNotifier{
     List<Exercise> filteredExercises = _exercises.where((exercise)=>exercise.muscleType == type).toList();
     return filteredExercises;
   }
+  
+  void addLogToExercise(String exerciseId, double weight, int reps){
+    Exercise exercise = getExercise(exerciseId);
+    DateTime currentDate = DateTime.now();
+    int oneRepMax = (weight * (36/(37-reps))).round();
+    Log newLog = Log(exerciseId: exercise.id, dateLog: currentDate, reps: reps, weight: weight, oneRepMax: oneRepMax);
+    exercise.logs.add(newLog);
+  } 
 }

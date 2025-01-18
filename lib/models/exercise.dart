@@ -1,7 +1,9 @@
+import 'package:gym_note/models/log.dart';
+
 class Exercise {
   final String id;
   final String name;
-  final List<DateTime> logs;
+  final List<Log> logs;
   final String description;
   final String muscleType;
 
