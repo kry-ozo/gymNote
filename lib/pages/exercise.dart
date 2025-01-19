@@ -21,6 +21,7 @@ class _ExercisePageState extends State<ExercisePage> {
   TextEditingController weightController = TextEditingController();
   TextEditingController repsController = TextEditingController();   
   DateFormat format = DateFormat("yyyy-MM-dd");
+  
 
   @override
   Widget build(BuildContext context) {
@@ -62,6 +63,10 @@ class _ExercisePageState extends State<ExercisePage> {
                     width: 100,
                     height: 50,
                     child: TextField(
+                      style: TextStyle(
+                        color: Colors.yellow
+                      ),
+                      textAlign: TextAlign.center,
                       keyboardType: TextInputType.number,
                       inputFormatters: [
                         FilteringTextInputFormatter.digitsOnly
@@ -74,9 +79,21 @@ class _ExercisePageState extends State<ExercisePage> {
                     ),
                   ),
                   const SizedBox(width: 10), 
-                  Icon(Icons.add, color: Colors.yellow),
-                  const SizedBox(width: 10),
-                  Icon(Icons.remove, color: Colors.yellow),
+                  IconButton(onPressed: (){
+                    int oldValue =int.parse(repsController.text);
+                    int newValue = oldValue+=1;
+                    setState(() {
+                      repsController.text = newValue.toString();
+                    });
+                  }, icon: Icon(Icons.add, color: Colors.yellow),),
+                  
+                  IconButton(onPressed: (){
+                    int oldValue =int.parse(repsController.text);
+                    int newValue = oldValue-=1;
+                    setState(() {
+                      repsController.text = newValue.toString();
+                    });
+                  }, icon: Icon(Icons.remove, color: Colors.yellow),)
                 ],
               ),
               const SizedBox(height: 15,), 
@@ -101,6 +118,10 @@ class _ExercisePageState extends State<ExercisePage> {
                     width: 100,
                     height: 50,
                     child: TextField(
+                      style: TextStyle(
+                        color: Colors.yellow
+                      ),
+                      textAlign: TextAlign.center,
                       keyboardType: TextInputType.number,
                       inputFormatters: [
                         FilteringTextInputFormatter.digitsOnly
@@ -113,9 +134,20 @@ class _ExercisePageState extends State<ExercisePage> {
                     ),
                   ),
                   const SizedBox(width: 10),
-                  Icon(Icons.add, color: Colors.yellow),
-                  const SizedBox(width: 10),
-                  Icon(Icons.remove, color: Colors.yellow),
+                  IconButton(onPressed: (){
+                    int oldValue =int.parse(weightController.text);
+                    int newValue = oldValue+=5;
+                    setState(() {
+                      weightController.text = newValue.toString();
+                    });
+                  }, icon: Icon(Icons.add, color: Colors.yellow),),
+                  IconButton(onPressed: (){
+                    int oldValue =int.parse(weightController.text);
+                    int newValue = oldValue-=5;
+                    setState(() {
+                      weightController.text = newValue.toString();
+                    });
+                  }, icon: Icon(Icons.remove, color: Colors.yellow),)
                 ],
               ),
               const SizedBox(height: 30,), 
