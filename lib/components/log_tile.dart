@@ -7,14 +7,31 @@ class LogTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        Text("Reps: ${log.reps}"),
-        Text("Weight: ${log.weight}kg"),
-        Text("1RM: ${log.oneRepMax}kg")
-      ],
+    return Container(
+      color: const Color.fromARGB(255, 24, 24, 24),
+      padding: EdgeInsets.symmetric( horizontal: 10, vertical: 18),
+      margin: EdgeInsets.symmetric(horizontal: 5, vertical: 7),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Text("Reps: ${log.reps}",
+          style: const TextStyle(
+            color: Colors.yellow,
+            fontSize: 16
+          ),),
+          Text("Weight: ${log.weight}kg",
+          style: const TextStyle(
+            color: Colors.yellow,
+            fontSize: 16
+          ),),
+          Text("1RM: ${log.oneRepMax}kg",
+          style: const TextStyle(
+            color: Colors.yellow,
+            fontSize: 16
+          ),)
+        ],
+      ),
     );
   }
 }
