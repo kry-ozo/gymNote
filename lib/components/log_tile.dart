@@ -9,8 +9,8 @@ class LogTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: const Color.fromARGB(255, 24, 24, 24),
-      padding: EdgeInsets.symmetric( horizontal: 10, vertical: 18),
-      margin: EdgeInsets.symmetric(horizontal: 5, vertical: 7),
+      padding: const EdgeInsets.symmetric( horizontal: 10, vertical: 18),
+      margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 7),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -20,7 +20,7 @@ class LogTile extends StatelessWidget {
             color: Colors.yellow,
             fontSize: 16
           ),),
-          Text("Weight: ${log.weight}kg",
+          Text("Wght: ${log.weight}kg",
           style: const TextStyle(
             color: Colors.yellow,
             fontSize: 16

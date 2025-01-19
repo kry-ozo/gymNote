@@ -15,6 +15,7 @@ dependencies:
   super_icons: ^1.0.3
   provider: ^6.1.2
   uuid: ^4.5.1
+  intl: ^0.20.1
 
 dev_dependencies:
   flutter_test:

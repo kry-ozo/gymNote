@@ -6,12 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gym_note/components/log_tile.dart';
 import 'package:gym_note/services/exercise_provider.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class ExercisePage extends StatefulWidget {
   final String id;
   const ExercisePage({super.key, required this.id});
-
   @override
   State<ExercisePage> createState() => _ExercisePageState();
 }
@@ -20,6 +20,7 @@ class _ExercisePageState extends State<ExercisePage> {
 
   TextEditingController weightController = TextEditingController();
   TextEditingController repsController = TextEditingController();   
+  DateFormat format = DateFormat("yyyy-MM-dd");
 
   @override
   Widget build(BuildContext context) {
@@ -148,9 +149,9 @@ class _ExercisePageState extends State<ExercisePage> {
               ListView.builder(
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
-                itemCount: provider.getExercise(widget.id).logs.length,
+                itemCount: provider.getLogsFromDate(provider.getExercise(widget.id).logs, format.format(DateTime.now())).length,
                 itemBuilder: (context, index) {
-                  return LogTile(log: provider.getExercise(widget.id).logs[index]);
+                  return LogTile(log: provider.getLogsFromDate(provider.getExercise(widget.id).logs, format.format(DateTime.now()))[index]);
                 },
               ),
               SizedBox(height: 30,),

@@ -1,6 +1,6 @@
 class Log{
   final String exerciseId;
-  final DateTime dateLog;
+  final String dateLog;
   final int reps;
   final double weight;
   final int oneRepMax;

@@ -3,6 +3,7 @@ import 'package:gym_note/models/exercise.dart';
 import 'package:gym_note/models/log.dart';
 import 'package:gym_note/placeholders/exercise_list.dart';
 import 'package:uuid/uuid.dart';
+import 'package:intl/intl.dart';
 
 class ExerciseProvider extends ChangeNotifier{
   final List<Exercise> _exercises = exercisesPlaceholderList;
@@ -29,10 +30,16 @@ class ExerciseProvider extends ChangeNotifier{
   
   void addLogToExercise(String exerciseId, double weight, int reps){
     Exercise exercise = getExercise(exerciseId);
-    DateTime currentDate = DateTime.now();
+    DateFormat format = DateFormat("yyyy-MM-dd");
+    String currentDate = format.format(DateTime.now());
     int oneRepMax = (weight * (36/(37-reps))).round();
     Log newLog = Log(exerciseId: exercise.id, dateLog: currentDate, reps: reps, weight: weight, oneRepMax: oneRepMax);
     exercise.logs.add(newLog);
     notifyListeners();
   } 
+
+  List<Log> getLogsFromDate(List<Log> logs, String date){
+    List<Log> filteredLogs = logs.where((log)=>log.dateLog.compareTo(date) == 0).toList();
+    return filteredLogs;
+  }
 }
