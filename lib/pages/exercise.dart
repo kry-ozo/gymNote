@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'dart:ffi';
+
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -143,7 +143,17 @@ class _ExercisePageState extends State<ExercisePage> {
                 color: Colors.yellow,
                 fontSize: 18
               ),),
-              //HERE IS GONNA BE LOGS LIST
+              // HERE IS GONNA BE TODAYS LOGS LIST
+              ListView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: provider.getExercise(widget.id).logs.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    title:Text("${provider.getExercise(widget.id).logs[index].weight}"),
+                  );
+                },
+              ),
               SizedBox(height: 30,),
               Text("Last Session", textAlign: TextAlign.center, style: TextStyle(
                 color: Colors.yellow,
