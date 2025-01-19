@@ -4,6 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gym_note/components/log_tile.dart';
 import 'package:gym_note/services/exercise_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -149,9 +150,7 @@ class _ExercisePageState extends State<ExercisePage> {
                 physics: NeverScrollableScrollPhysics(),
                 itemCount: provider.getExercise(widget.id).logs.length,
                 itemBuilder: (context, index) {
-                  return ListTile(
-                    title:Text("${provider.getExercise(widget.id).logs[index].weight}"),
-                  );
+                  return LogTile(log: provider.getExercise(widget.id).logs[index]);
                 },
               ),
               SizedBox(height: 30,),
