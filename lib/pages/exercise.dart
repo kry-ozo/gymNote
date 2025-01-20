@@ -5,6 +5,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gym_note/components/log_tile.dart';
+import 'package:gym_note/pages/history.dart';
 import 'package:gym_note/services/exercise_provider.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -193,7 +194,11 @@ class _ExercisePageState extends State<ExercisePage> {
               ),),
               //LOG LIST WITH LAST SESSION
               SizedBox(height: 30,),
-              TextButton(onPressed: (){}, child: Text("View History", style: TextStyle(
+              TextButton(onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>HistoryPage(
+                  exerciseId: widget.id, logs: provider.getExercise(widget.id).logs)
+                  ));
+              }, child: Text("View History", style: TextStyle(
                 color: Colors.yellow,
                 fontWeight: FontWeight.bold,
                 fontSize: 20
