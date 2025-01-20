@@ -20,7 +20,7 @@ class HistoryPage extends StatelessWidget {
         ),
         backgroundColor:const Color.fromARGB(255, 24, 24, 24) ,
         centerTitle: true,
-        title: Text("${provider.getExercise(exerciseId).name} history", style: const TextStyle(color: Colors.yellow, fontWeight: FontWeight.w600),),
+        title: Text("${provider.getExercise(exerciseId).name} History", style: const TextStyle(color: Colors.yellow, fontWeight: FontWeight.w600),),
         
       ),
       body:  ListView(
@@ -31,19 +31,48 @@ class HistoryPage extends StatelessWidget {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  date,
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 24, 24, 24),
+                ),
+                child: Center(
+                  child: Text(
+                    date,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 20,
+                       fontWeight: FontWeight.bold,
+                        color: Colors.yellow
+                      ),
+                  ),
                 ),
               ),
+              SizedBox(height: 15,),
               ...logsForDate.map((log) {
-                return ListTile(
-                  title: Text('Exercise ID: ${log.exerciseId}'),
-                  subtitle: Text('Reps: ${log.reps}, Weight: ${log.weight} kg'),
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    
+                    children: [
+                      Text("Reps: ${log.reps}", style: TextStyle(
+                        color: Colors.yellow,
+                        fontSize: 18
+                      ),),
+                      Text("Wght: ${log.weight}kg", style: TextStyle(
+                        color: Colors.yellow,
+                        fontSize: 18
+                      ),),
+                      Text("1RepMax: ${log.oneRepMax}", style: TextStyle(
+                        color: Colors.yellow,
+                        fontSize: 18
+                      ),)
+                    ],
+                  ),
                 );
-              }).toList(),
+              }),
             ],
           );
         }).toList(),
