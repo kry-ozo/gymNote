@@ -4,6 +4,7 @@ import 'package:gym_note/models/log.dart';
 import 'package:gym_note/placeholders/exercise_list.dart';
 import 'package:uuid/uuid.dart';
 import 'package:intl/intl.dart';
+import 'package:collection/collection.dart';
 
 class ExerciseProvider extends ChangeNotifier{
   final List<Exercise> _exercises = exercisesPlaceholderList;
@@ -41,5 +42,9 @@ class ExerciseProvider extends ChangeNotifier{
   List<Log> getLogsFromDate(List<Log> logs, String date){
     List<Log> filteredLogs = logs.where((log)=>log.dateLog.compareTo(date) == 0).toList();
     return filteredLogs;
+  }
+
+  Map<String, List<Log>> groupExercisesByDate(List<Log> logs){
+    return groupBy(logs, (Log log) => log.dateLog);
   }
 }
