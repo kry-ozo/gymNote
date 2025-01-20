@@ -47,4 +47,13 @@ class ExerciseProvider extends ChangeNotifier{
   Map<String, List<Log>> groupExercisesByDate(List<Log> logs){
     return groupBy(logs, (Log log) => log.dateLog);
   }
+
+  String getSecondNewestDate(List<Log> logs) {
+  List<String> sortedDates = logs
+      .map((log) => log.dateLog)
+      .toSet()
+      .toList()
+    ..sort((a, b) => b.compareTo(a));
+  return sortedDates.length > 1 ? sortedDates[1] : 'Brak wystarczających danych';
+}
 }

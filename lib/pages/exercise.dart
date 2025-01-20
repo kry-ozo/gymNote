@@ -23,10 +23,13 @@ class _ExercisePageState extends State<ExercisePage> {
   TextEditingController repsController = TextEditingController();   
   DateFormat format = DateFormat("yyyy-MM-dd");
   
+  
 
   @override
   Widget build(BuildContext context) {
+    
     return Consumer<ExerciseProvider>(builder: (context, provider, child){
+      String secondDate = provider.getSecondNewestDate(provider.getExercise(widget.id).logs);
       return Scaffold(
       backgroundColor:const Color.fromARGB(255, 43, 43, 43) ,
       appBar: AppBar(
@@ -192,6 +195,14 @@ class _ExercisePageState extends State<ExercisePage> {
                 color: Colors.yellow,
                 fontSize: 18
               ),),
+              ListView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: provider.getLogsFromDate(provider.getExercise(widget.id).logs, secondDate).length,
+                itemBuilder: (context, index) {
+                  return LogTile(log: provider.getLogsFromDate(provider.getExercise(widget.id).logs, secondDate)[index]);
+                },
+              ),
               //LOG LIST WITH LAST SESSION
               SizedBox(height: 30,),
               TextButton(onPressed: (){

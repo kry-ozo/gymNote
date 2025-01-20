@@ -48,7 +48,7 @@ class HistoryPage extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 15,),
+              const SizedBox(height: 15,),
               ...logsForDate.map((log) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10),
@@ -57,15 +57,15 @@ class HistoryPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     
                     children: [
-                      Text("Reps: ${log.reps}", style: TextStyle(
+                      Text("Reps: ${log.reps}", style: const TextStyle(
                         color: Colors.yellow,
                         fontSize: 18
                       ),),
-                      Text("Wght: ${log.weight}kg", style: TextStyle(
+                      Text("Wght: ${log.weight}kg", style: const TextStyle(
                         color: Colors.yellow,
                         fontSize: 18
                       ),),
-                      Text("1RepMax: ${log.oneRepMax}", style: TextStyle(
+                      Text("1RM: ${log.oneRepMax}kg", style: const TextStyle(
                         color: Colors.yellow,
                         fontSize: 18
                       ),)
