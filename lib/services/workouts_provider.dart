@@ -6,11 +6,7 @@ import 'package:uuid/uuid.dart';
 
 class WorkoutsProvider extends ChangeNotifier{
   List<Workout> _workouts = [
-    Workout(
-      id: "test",
-      workoutName: "test",
-      exercises: [],
-    ),
+   
   ];
   static const uuid = Uuid();
 
