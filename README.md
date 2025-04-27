@@ -38,7 +38,7 @@ Follow these steps to run the project locally:
     ```bash
     flutter pub get
     
-Run the application:
+4. Run the application:
 
     ```bash
     flutter run
